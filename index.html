@@ -115,51 +115,14 @@
 									</ul>
 								</article>
 							</section>
-							<!-- Medium Blog Section -->
-                            <section id="medium" class="post section">
-                                <header class="major">
-                                    <h2>Medium Blog Articles</h2>
-                                </header>
-                                <section class="posts">
-                                    <article>
-                                        <header>
-                                            <h2><a href="https://medium.com/@mosesmyn/the-intelligent-transformation-how-artificial-intelligence-is-reshaping-healthcare-finance-340ff370bd1d">The Intelligent Transformation: How Artificial Intelligence is Reshaping Healthcare & Finance</a></h2>
-                                        </header>
-                                        <p>A comprehensive look at how AI is transforming various industries...</p>
-                                        <ul class="actions special">
-                                            <li><a href="https://medium.com/@mosesmyn/the-intelligent-transformation-how-artificial-intelligence-is-reshaping-healthcare-finance-340ff370bd1d" class="button">Read Article</a></li>
-                                        </ul>
-                                    </article>
-                                    <article>
-                                        <header>
-                                            <h2><a href="https://medium.com/@mosesmyn/my-alx-journey-a7758f7542f9">My ALX Journey</a></h2>
-                                        </header>
-                                        <p>A personal reflection on my journey through the ALX program...</p>
-                                        <ul class="actions special">
-                                            <li><a href="https://medium.com/@mosesmyn/my-alx-journey-a7758f7542f9" class="button">Read Article</a></li>
-                                        </ul>
-                                    </article>
-                                    <article>
-                                        <header>
-                                            <h2><a href="https://medium.com/@mosesmyn/free-course-data-annotation-for-kids-and-beginners-f5cb9030a0c5">Free Course: Data Annotation for Kids and Beginners</a></h2>
-                                        </header>
-                                        <p>An introductory course to data annotation for those new to the field...</p>
-                                        <ul class="actions special">
-                                            <li><a href="https://medium.com/@mosesmyn/free-course-data-annotation-for-kids-and-beginners-f5cb9030a0c5" class="button">Read Article</a></li>
-                                        </ul>
-                                    </article>
-                                    <article>
-                                        <header>
-                                            <h2><a href="https://medium.com/@mosesmyn/gpt-4-the-next-frontier-in-natural-language-processing-151b3b69e90f">GPT-4: The Next Frontier in Natural Language Processing</a></h2>
-                                        </header>
-                                        <p>An exploration of the latest advancements in natural language processing...</p>
-                                        <ul class="actions special">
-                                            <li><a href="https://medium.com/@mosesmyn/gpt-4-the-next-frontier-in-natural-language-processing-151b3b69e90f" class="button">Read Article</a></li>
-                                        </ul>
-                                    </article>
-                                </section>
-                            </section>
-                        </section>
+							</section><!-- Medium Blog Section -->
+							<section id="medium" class="post section">
+								<header class="major">
+									<h2>Medium Blog Articles</h2>
+								</header>
+								<div id="articles"></div>
+							</section>
+						</section>
 					</div>
 
 				<!-- Footer -->
@@ -234,7 +197,21 @@
 				   document.getElementById(sectionId).style.display = 'block';
 				}
 			 </script>
-			 
-
+			 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			 <script>
+				 $(document).ready(function() {
+					 $.ajax({
+						 url: 'https://cors-anywhere.herokuapp.com/https://medium.com/feed/@mosesmyn',
+						 dataType: 'xml',
+						 success: function(data) {
+							 $(data).find('item').each(function() {
+								 var title = $(this).find('title').text();
+								 var link = $(this).find('link').text();
+								 $('#articles').append('<h3><a href="' + link + '">' + title + '</a></h3>');
+							 });
+						 }
+					 });
+				 });
+			 </script>
 	</body>
 </html>
