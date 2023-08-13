@@ -29,12 +29,13 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="#bio">Bio</a></li>
-							<li><a href="#elevator-pitch">Elevator Pitch</a></li>
-							<li><a href="#projects">Projects</a></li>
-							<li><a href="https://medium.com/@mosesmyn">Medium</a></li>
+							<li><a href="javascript:void(0);" onclick="showSection('bio')">Bio</a></li>
+							<li><a href="javascript:void(0);" onclick="showSection('elevator-pitch')">Elevator Pitch</a></li>
+							<li><a href="javascript:void(0);" onclick="showSection('projects')">Projects</a></li>
+							<li><a href="javascript:void(0);" onclick="showSection('medium')">Medium</a></li>
 							<li><a href="https://github.com/moses-y">Github</a></li>
-						</ul>
+						 </ul>
+						 
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/moses-yebei-12996755/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
 							<li><a href="https://github.com/moses-y" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
@@ -45,7 +46,7 @@
 				<!-- Main -->
 					<div id="main">
 						<!-- Bio Section -->
-						<section id="bio" class="post">
+						<section id="bio" class="post section">
 							<header class="major">
 								<h2>About Me</h2>
 							</header>
@@ -53,7 +54,7 @@
 							<p>Throughout his journey, Moses has showcased his prowess by deploying a machine learning model that significantly enhanced business operations. His adeptness with Google Cloud has enabled him to efficiently manage large datasets and handle intricate computations, setting him apart from his peers. Among his crowning achievements are his continued dedication to the ALX Data Science Program, where he consistently pushes the boundaries of his knowledge, and his successful model deployments that stand as a testament to his skills in the data science landscape.</p>
 						</section>
 						<!-- Elevator Pitch Section -->
-						<section id="elevator-pitch" class="post">
+						<section id="elevator-pitch" class="post section">
 							<header class="major">
 								<h2>Elevator Pitch</h2>
 							</header>
@@ -61,7 +62,7 @@
 						</section>
 
 						<!-- Projects Section -->
-						<section id="projects">
+						<section id="projects" class="post section">
 							<article class="post featured">
 								<header class="major">
 									<h2><a href="https://github.com/moses-y/Data-Science-Machine-Learning/tree/main/Generalised%20Linear%20Models%20in%20Insurance%20Motor%20Claims">Generalised Linear Models in Insurance Motor Claims</a></h2>
@@ -113,8 +114,9 @@
 										<li><a href="https://github.com/moses-y/Data-Science-Machine-Learning/tree/main/Fourier%20Analysis" class="button">View Project</a></li>
 									</ul>
 								</article>
-							</section><!-- Medium Blog Section -->
-                            <section id="medium-blog">
+							</section>
+							<!-- Medium Blog Section -->
+                            <section id="medium" class="post section">
                                 <header class="major">
                                     <h2>Medium Blog Articles</h2>
                                 </header>
@@ -221,6 +223,18 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function showSection(sectionId) {
+				   // Hide all sections
+				   var sections = document.getElementsByClassName('section');
+				   for (var i = 0; i < sections.length; i++) {
+					  sections[i].style.display = 'none';
+				   }
+				   // Show the selected section
+				   document.getElementById(sectionId).style.display = 'block';
+				}
+			 </script>
+			 
 
 	</body>
 </html>
