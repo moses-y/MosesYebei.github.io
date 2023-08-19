@@ -220,45 +220,37 @@
 				}
 			 </script>
 			 <script>
-			 // Your Medium username 
+				 // Medium username
 				const mediumUsername = "@mosesmyn";
 				
-				// Construct Medium RSS feed URL
-				const mediumURL = `https://medium.com/${mediumUsername}`; 
+				// Construct URL 
+				const mediumURL = `https://medium.com/feed/${mediumUsername}`;
 				
-				// AJAX request 
 				$.ajax({
+				
 				  url: mediumURL,
-				  method: 'GET',
-				  dataType: 'xml',
-				  success: (data) => {
 				
-					// Parse XML data
-					const xml = $(data);
+				  success: function(xml) {
 				
-					// Find all <item> elements
-					const items = xml.find('item');
+				    // Find <item> elements
+				    const items = $(xml).find("item");
 				
-					// Loop through items
-					items.each((_, item) => {
+				    items.each(function() {
+				    
+				      // Get data  
+				      const title = $(this).find("title").text();
+				      const link = $(this).find("link").text();
+				      
+				      // Append article
+				      $("#articles").append(`
+				        <h3><a href="${link}">${title}</a></h3>
+				      `);
+				      
+				    });
 				
-					  // Get title and link
-					  const title = $(item).find('title').text();
-					  const link = $(item).find('link').text();
-				
-					  // Output article
-					  $('#articles').append(`
-						<h3><a href="${link}">${title}</a></h3>
-					  `);
-				
-					});
-					
-				  },
-				  error: (error) => {
-					console.log(error); 
 				  }
-				})
 				
-				</script>
+				});
+			 </script>
 	</body>
 </html>
