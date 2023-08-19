@@ -126,7 +126,8 @@
 									</ul>
 								</article>
 							</section>
-							</section><!-- Medium Blog Section -->
+							</section>
+							<!-- Medium Blog Section -->
 							<section id="medium" class="post section">
 								<header class="major">
 									<h2>Medium Blog Articles</h2>
@@ -217,21 +218,58 @@
 				   document.getElementById(sectionId).style.display = 'block';
 				}
 			 </script>
-			 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 			 <script>
-				 $(document).ready(function() {
-					 $.ajax({
-						 url: 'https://medium.com/feed/@mosesmyn',
-						 dataType: 'xml',
-						 success: function(data) {
-							 $(data).find('item').each(function() {
-								 var title = $(this).find('title').text();
-								 var link = $(this).find('link').text();
-								 $('#articles').append('<h3><a href="' + link + '">' + title + '</a></h3>');
-							 });
-						 }
-					 });
-				 });
-			 </script>
+
+				// Your Medium username
+				const mediumUsername = "@mosesmyn"; 
+				
+				// Medium RSS feed URL
+				const mediumURL = `https://medium.com/feed/${mediumUsername}`;
+				
+				// Fetch Medium articles 
+				async function fetchArticles() {
+				
+				  try {
+				
+					// Show loading spinner
+					$("#articles").html('<div class="loader"></div>');
+				
+					// Make AJAX request
+					const response = await $.get(mediumURL);
+				
+					// Parse XML response
+					const xml = $(response);
+				
+					// Find all articles
+					const articles = xml.find("item");
+				
+					// Loop through articles
+					articles.each(function() {
+				
+					  // Get data
+					  const title = $(this).find("title").text();
+					  const link = $(this).find("link").text();
+				
+					  // Create HTML for article
+					  const articleHTML = `
+						<h3><a href="${link}">${title}</a></h3>
+					  `;
+				
+					  // Append to articles div
+					  $("#articles").append(articleHTML);
+				
+					});
+				
+				  } catch (error) {
+					console.log(error);
+					$("#articles").html("Error loading articles");
+				  }
+				
+				}
+				
+				// Initially load articles
+				fetchArticles();
+				
+				</script>
 	</body>
 </html>
