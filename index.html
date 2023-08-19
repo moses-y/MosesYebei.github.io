@@ -219,56 +219,44 @@
 				}
 			 </script>
 			 <script>
-
-				// Your Medium username
-				const mediumUsername = "@mosesmyn"; 
+			 // Your Medium username 
+				const mediumUsername = "@mosesmyn";
 				
-				// Medium RSS feed URL
-				const mediumURL = `https://medium.com/feed/${mediumUsername}`;
+				// Construct Medium RSS feed URL
+				const mediumURL = `https://medium.com/feed/${mediumUsername}`; 
 				
-				// Fetch Medium articles 
-				async function fetchArticles() {
+				// AJAX request 
+				$.ajax({
+				  url: mediumURL,
+				  method: 'GET',
+				  dataType: 'xml',
+				  success: (data) => {
 				
-				  try {
+					// Parse XML data
+					const xml = $(data);
 				
-					// Show loading spinner
-					$("#articles").html('<div class="loader"></div>');
+					// Find all <item> elements
+					const items = xml.find('item');
 				
-					// Make AJAX request
-					const response = await $.get(mediumURL);
+					// Loop through items
+					items.each((_, item) => {
 				
-					// Parse XML response
-					const xml = $(response);
+					  // Get title and link
+					  const title = $(item).find('title').text();
+					  const link = $(item).find('link').text();
 				
-					// Find all articles
-					const articles = xml.find("item");
-				
-					// Loop through articles
-					articles.each(function() {
-				
-					  // Get data
-					  const title = $(this).find("title").text();
-					  const link = $(this).find("link").text();
-				
-					  // Create HTML for article
-					  const articleHTML = `
+					  // Output article
+					  $('#articles').append(`
 						<h3><a href="${link}">${title}</a></h3>
-					  `;
-				
-					  // Append to articles div
-					  $("#articles").append(articleHTML);
+					  `);
 				
 					});
-				
-				  } catch (error) {
-					console.log(error);
-					$("#articles").html("Error loading articles");
+					
+				  },
+				  error: (error) => {
+					console.log(error); 
 				  }
-				
-				}
-				
-				// Initially load articles
-				fetchArticles();
+				})
 				
 				</script>
 	</body>
