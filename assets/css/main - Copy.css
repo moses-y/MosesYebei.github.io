@@ -4685,50 +4685,5 @@ input, select, textarea {
 			box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
 			visibility: visible;
 		}
-		/* Centering YouTube Video in Elevator Pitch Section */
-		#elevator-pitch iframe {
-			display: block;
-			margin: 0 auto;
-		}
 
-		/* Centering Project Titles and Text in Projects Section */
-		#projects h2, #projects p {
-			text-align: center;
-		}
-
-		/* Centering Buttons in Projects Section */
-		#projects .actions.special li {
-			text-align: center;
-		}
-
-		/* Centering Medium Blog Articles Section Title and Content */
-		#medium h2, #medium h3, #medium p {
-			text-align: center;
-		}
-
-		/* Centering Resume Section */
-		#resume h2, #resume p, #resume .actions.special li {
-			text-align: center;
-		}
-		/* Centering and Styling Section Titles (h2) */
-		.post.section h2 {
-			text-align: center; /* Centering the text */
-			font-weight: bold;  /* Making the text bold */
-			color: #333;       /* Setting the text color */
-		}
-
-		/* Centering and Styling Section Content */
-		.post.section p,
-		.post.section a {
-			text-align: center; /* Centering the text */
-			font-size: 16px;    /* Setting the font size */
-			line-height: 1.5;   /* Setting the line height for readability */
-		}
-
-		/* Centering the embedded YouTube video */
-		.post.section iframe {
-			display: block;     /* Making the iframe a block element */
-			margin-left: auto;  /* Centering the iframe */
-			margin-right: auto; /* Centering the iframe */
-		}	
 	}
