@@ -1,6 +1,6 @@
 
 
-# Moses Yebei's Personal Website
+#Moses Yebei's Personal Website
 
 Welcome to the repository for Moses Yebei's personal website. This site serves as a digital portfolio, showcasing Moses's expertise as a seasoned Data Scientist with a strong background in Actuarial techniques, Statistics, Python, Data Visualization, and Machine Learning.
 
